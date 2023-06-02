@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerController : Character
+public class PlayerController : CharacterController
 {
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private FloatingJoystick _joystick;
 
     [SerializeField] private float _moveSpeed;
-
-    private AnimType currentAnimName = AnimType.Idle;
 
     public enum AnimType
     {

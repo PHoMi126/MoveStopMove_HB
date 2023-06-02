@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static PlayerController;
 
-public class Character : MonoBehaviour
+public class CharacterController : MonoBehaviour
 {
     [SerializeField] protected Animator _animator;
     private AnimType currentAnimName = AnimType.Idle;

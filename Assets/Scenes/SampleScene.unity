@@ -37020,9 +37020,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a0d908425ce6240b70b6c81c16e2e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 1958993386}
+  rotationSpeed: 100
   _rigidbody: {fileID: 1958993387}
   _joystick: {fileID: 1446009920}
-  _animator: {fileID: 1958993386}
   _moveSpeed: 5
 --- !u!1001 &1327641972
 PrefabInstance:
