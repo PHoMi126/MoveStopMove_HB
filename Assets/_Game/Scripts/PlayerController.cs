@@ -10,23 +10,28 @@ public class PlayerController : CharacterController
 
     [SerializeField] private float _moveSpeed;
 
-    public enum AnimType
-    {
-        Idle, Run, Dance
-    }
+    public Transform target;
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Input.GetMouseButton(0))
         {
             ChangeAnimation(AnimType.Run);
             _rigidbody.velocity = new Vector3(_joystick.Horizontal * _moveSpeed, _rigidbody.velocity.y, _joystick.Vertical * _moveSpeed);
-            transform.Rotate(new Vector3(0, Input.GetAxis("Horizontal") * rotationSpeed, 0));
         }
         else if (Input.GetMouseButtonUp(0))
         {
             ChangeAnimation(AnimType.Idle);
             _rigidbody.velocity = Vector3.zero;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "AI")
+        {
+            transform.LookAt(target);
+            ChangeAnimation(AnimType.Attack);
         }
     }
 }

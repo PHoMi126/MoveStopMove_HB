@@ -1,13 +1,21 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static PlayerController;
 
 public class CharacterController : MonoBehaviour
 {
-    [SerializeField] protected Animator _animator;
+    [SerializeField] Animator _animator;
+    [SerializeField] SkinnedMeshRenderer _character;
+    [SerializeField] SkinnedMeshRenderer _pant;
+
+    public List<Material> listClothes;
+
     private AnimType currentAnimName = AnimType.Idle;
     public float rotationSpeed = 100.0f;
+
+    public enum AnimType
+    {
+        Idle, Run, Attack, Ulti, Dance, Dead
+    }
 
     public void ChangeAnimation(AnimType _type)
     {
@@ -17,17 +25,33 @@ public class CharacterController : MonoBehaviour
             switch (_type)
             {
                 case AnimType.Idle:
-                    _animator.SetBool("IsIdle", true);
-                    _animator.SetBool("IsRun", false);
+                    _animator.SetTrigger("IsIdle");
                     break;
                 case AnimType.Run:
-                    _animator.SetBool("IsRun", true);
-                    _animator.SetBool("IsIdle", false);
+                    _animator.SetTrigger("IsRun");
+                    break;
+                case AnimType.Attack:
+                    _animator.SetTrigger("IsAttack");
+                    break;
+                case AnimType.Ulti:
+                    _animator.SetTrigger("IsUlti");
                     break;
                 case AnimType.Dance:
-                    _animator.SetBool("IsDance", true);
+                    _animator.SetTrigger("IsDance");
+                    break;
+                case AnimType.Dead:
+                    _animator.SetTrigger("IsDead");
                     break;
             }
+        }
+    }
+
+    public void SetClothes(int clothesID)
+    {
+        if (clothesID < listClothes.Count)
+        {
+
+
         }
     }
 }
