@@ -4,12 +4,12 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     [SerializeField] Animator _animator;
-    [SerializeField] SkinnedMeshRenderer _character;
-    [SerializeField] SkinnedMeshRenderer _pant;
+    [SerializeField] SkinnedMeshRenderer _characterMesh;
+    [SerializeField] SkinnedMeshRenderer _pantMesh;
 
     public List<Material> listClothes;
 
-    private AnimType currentAnimName = AnimType.Idle;
+    private AnimType currentAnimState = AnimType.Idle;
     public float rotationSpeed = 100.0f;
 
     public enum AnimType
@@ -17,12 +17,18 @@ public class CharacterController : MonoBehaviour
         Idle, Run, Attack, Ulti, Dance, Dead
     }
 
-    public void ChangeAnimation(AnimType _type)
+    void Start()
     {
-        if (currentAnimName != _type)
+        SetClothes(Random.Range(0, 9));
+    }
+
+    public void ChangeAnimation(AnimType _state)
+    {
+        if (currentAnimState != _state)
         {
-            currentAnimName = _type;
-            switch (_type)
+            currentAnimState = _state;
+            _animator.SetTrigger(currentAnimState.ToString());
+            /* switch (_state)
             {
                 case AnimType.Idle:
                     _animator.SetTrigger("IsIdle");
@@ -42,7 +48,7 @@ public class CharacterController : MonoBehaviour
                 case AnimType.Dead:
                     _animator.SetTrigger("IsDead");
                     break;
-            }
+            } */
         }
     }
 
@@ -50,8 +56,8 @@ public class CharacterController : MonoBehaviour
     {
         if (clothesID < listClothes.Count)
         {
-
-
+            _characterMesh.material = listClothes[clothesID];
+            _pantMesh.material = listClothes[clothesID];
         }
     }
 }
