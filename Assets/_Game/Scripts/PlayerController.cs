@@ -28,10 +28,4 @@ public class PlayerController : CharacterController
         _rigidbody.AddForce(direction * _moveSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
         CharacterObject.transform.LookAt(new Vector3(_joystick.Vertical, this.transform.position.y, _joystick.Horizontal)); */
     }
-
-    public override void Dead()
-    {
-        base.Dead();
-    }
-
 }

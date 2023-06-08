@@ -39,6 +39,7 @@ public class CharacterController : MonoBehaviour
         if (attackTime <= 0)
         {
             Attack();
+            Invoke("EndAttack", 0.5f);
         }
     }
 
@@ -66,6 +67,7 @@ public class CharacterController : MonoBehaviour
         {
             attackTime = 3f;
             ChangeAnimation(AnimState.Attack);
+            ThrowWeapon();
         }
     }
 
@@ -77,7 +79,7 @@ public class CharacterController : MonoBehaviour
             weaponObject.transform.position = _weaponBase.transform.position;
             weaponObject.transform.rotation = _weaponBase.transform.rotation;
 
-            //weaponObject.GetComponent<WeaponController>().Shoot(_targetController.FindTheTarget().transform);
+            weaponObject.GetComponent<WeaponController>().Shoot(_targetController.FindTheTarget().transform);
         }
         _weaponTransform.gameObject.SetActive(false);
     }
@@ -88,8 +90,25 @@ public class CharacterController : MonoBehaviour
         ChangeAnimation(AnimState.Idle);
     }
 
-    public virtual void Dead()
+    public void Dead()
     {
         ChangeAnimation(AnimState.Dead);
+        Invoke("Kill", 1f);
     }
+
+    public void Kill()
+    {
+        if (gameObject != null)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    /*private void OnTriggerEnter(Collider other)
+   {
+       if (other.gameObject.tag == "Weapon")
+       {
+           Dead();
+       }
+   } */
 }

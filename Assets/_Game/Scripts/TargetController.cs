@@ -9,7 +9,7 @@ public class TargetController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         CharacterController enemy = other.GetComponent<CharacterController>();
-        if (enemy != null && !listEnemy.Contains(enemy))
+        if (enemy != parent && enemy != null && !listEnemy.Contains(enemy))
         {
             listEnemy.Add(enemy);
         }
@@ -18,7 +18,7 @@ public class TargetController : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         CharacterController enemy = other.GetComponent<CharacterController>();
-        if (enemy != parent && enemy != null && listEnemy.Contains(enemy))
+        if (enemy != null && listEnemy.Contains(enemy))
         {
             listEnemy.Remove(enemy);
         }
