@@ -10,18 +10,17 @@ public class CharacterController : MonoBehaviour
     [SerializeField] Transform _weaponTransform;
     [SerializeField] TargetController _targetController;
     [SerializeField] GameObject _weaponPrefab;
+    [SerializeField] Transform characterTarget;
 
     public GameObject CharacterObject;
+    public float attackTime;
     public List<Material> listClothes;
 
-
     private AnimState currentAnimState = AnimState.Idle;
-    public float attackTime;
 
     public enum CharacterType
     {
-        Player,
-        Enemy,
+        Player, Enemy
     }
     public enum AnimState
     {
@@ -68,6 +67,7 @@ public class CharacterController : MonoBehaviour
             attackTime = 3f;
             ChangeAnimation(AnimState.Attack);
             ThrowWeapon();
+            CharacterObject.transform.LookAt(characterTarget);
         }
     }
 
@@ -75,7 +75,7 @@ public class CharacterController : MonoBehaviour
     {
         if (_targetController.FindTheTarget() != null)
         {
-            GameObject weaponObject = GameObject.Instantiate(_weaponPrefab);
+            GameObject weaponObject = Instantiate(_weaponPrefab);
             weaponObject.transform.position = _weaponBase.transform.position;
             weaponObject.transform.rotation = _weaponBase.transform.rotation;
 
@@ -93,7 +93,7 @@ public class CharacterController : MonoBehaviour
     public void Dead()
     {
         ChangeAnimation(AnimState.Dead);
-        Invoke("Kill", 1f);
+        Invoke("Kill", 2f);
     }
 
     public void Kill()
@@ -104,11 +104,19 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    /*private void OnTriggerEnter(Collider other)
-   {
-       if (other.gameObject.tag == "Weapon")
-       {
-           Dead();
-       }
-   } */
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Weapon")
+        {
+            Dead();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ignore")
+        {
+            Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
+        }
+    }
 }

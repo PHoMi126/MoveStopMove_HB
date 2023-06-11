@@ -981,7 +981,6 @@ GameObject:
   m_Component:
   - component: {fileID: 230426628431800274}
   - component: {fileID: 230426628431800279}
-  - component: {fileID: 230426628431800276}
   - component: {fileID: 230426628431800278}
   - component: {fileID: 2085322381289883643}
   - component: {fileID: 2085322381289883636}
@@ -1031,22 +1030,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!54 &230426628431800276
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 230426628431800275}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 116
-  m_CollisionDetection: 0
 --- !u!65 &230426628431800278
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1101,7 +1084,9 @@ MonoBehaviour:
   _weaponTransform: {fileID: 230426628249061692}
   _targetController: {fileID: 230426628883970037}
   _weaponPrefab: {fileID: 5356899536614283606}
+  characterTarget: {fileID: 0}
   CharacterObject: {fileID: 230426628431800275}
+  attackTime: 3
   listClothes:
   - {fileID: 2100000, guid: f847b4f64b8e54942afbcfd79c6f9d38, type: 2}
   - {fileID: 2100000, guid: 0afac47bff04c9f4e86f168c3be0e47f, type: 2}
@@ -1111,7 +1096,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: a7c73a4af1f3ae54d857e5be90755f76, type: 2}
   - {fileID: 2100000, guid: bef3b98bc61803a4390744ec816c5b50, type: 2}
   - {fileID: 2100000, guid: 3f59a16f2ed86834abfbd74d687e952d, type: 2}
-  attackTime: 3
 --- !u!1 &230426628483855618
 GameObject:
   m_ObjectHideFlags: 0

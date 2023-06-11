@@ -9,7 +9,7 @@ public class WeaponController : MonoBehaviour
         Vector3 targetPos = new Vector3(target.position.x, this.transform.position.y, target.position.z);
         LeanTween.move(this.gameObject, target.position, 0.5f).setOnComplete(() =>
         {
-            GameObject.Destroy(this.gameObject);
+            Destroy(this.gameObject);
         });
     }
 }

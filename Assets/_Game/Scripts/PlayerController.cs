@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerController : CharacterController
 {
-    [SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] Rigidbody _rigidbody;
     public FloatingJoystick _joystick;
 
     [SerializeField] private float _moveSpeed;
@@ -22,7 +22,7 @@ public class PlayerController : CharacterController
             _rigidbody.velocity = Vector3.zero;
         }
 
-        CharacterObject.transform.LookAt(new Vector3(_joystick.Horizontal, this.transform.position.y, _joystick.Vertical));
+        //CharacterObject.transform.LookAt(new Vector3(_joystick.Horizontal, this.transform.position.y, _joystick.Vertical));
 
         /* Vector3 direction = Vector3.forward * _joystick.Vertical + Vector3.right * _joystick.Horizontal;
         _rigidbody.AddForce(direction * _moveSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);

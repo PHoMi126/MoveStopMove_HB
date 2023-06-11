@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Character
   - Weapon
+  - Ignore
   layers:
   - Default
   - TransparentFX

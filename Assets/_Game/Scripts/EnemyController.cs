@@ -1,9 +1,6 @@
-﻿using UnityEngine;
-using UnityEngine.AI;
-
-public class EnemyController : CharacterController
+﻿public class EnemyController : CharacterController
 {
-    public NavMeshAgent agent;
+    /* public NavMeshAgent agent;
     public float range; //radius of sphere
 
     public Transform centrePoint; //centre of the area the agent wants to move around in
@@ -43,5 +40,5 @@ public class EnemyController : CharacterController
 
         result = Vector3.zero;
         return false;
-    }
+    } */
 }
