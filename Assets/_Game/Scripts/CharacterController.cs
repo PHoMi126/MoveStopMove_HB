@@ -38,7 +38,6 @@ public class CharacterController : MonoBehaviour
         if (attackTime <= 0)
         {
             Attack();
-            Invoke("EndAttack", 0.5f);
         }
     }
 
@@ -108,7 +107,7 @@ public class CharacterController : MonoBehaviour
     {
         if (other.gameObject.tag == "Weapon")
         {
-            Dead();
+            //Dead();
         }
     }
 

@@ -1,6 +1,9 @@
-﻿public class EnemyController : CharacterController
+﻿using UnityEngine;
+using UnityEngine.AI;
+
+public class EnemyController : CharacterController
 {
-    /* public NavMeshAgent agent;
+    public NavMeshAgent agent;
     public float range; //radius of sphere
 
     public Transform centrePoint; //centre of the area the agent wants to move around in
@@ -17,10 +20,13 @@
         if (agent.remainingDistance <= agent.stoppingDistance) //done with path
         {
             Vector3 point;
+            ChangeAnimation(AnimState.Idle);
+
             if (RandomPoint(centrePoint.position, range, out point)) //pass in our centre point and radius of area
             {
                 Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
                 agent.SetDestination(point);
+                ChangeAnimation(AnimState.Run);
             }
         }
 
@@ -40,5 +46,5 @@
 
         result = Vector3.zero;
         return false;
-    } */
+    }
 }
