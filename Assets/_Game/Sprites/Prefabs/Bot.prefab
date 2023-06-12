@@ -1085,7 +1085,7 @@ MonoBehaviour:
   _weaponTransform: {fileID: 230426628249061692}
   _targetController: {fileID: 230426628883970037}
   _weaponPrefab: {fileID: 5356899536614283606}
-  characterTarget: {fileID: 0}
+  characterTarget: {fileID: 230426628431800274}
   CharacterObject: {fileID: 230426628431800275}
   attackTime: 3
   listClothes:
@@ -1097,9 +1097,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: a7c73a4af1f3ae54d857e5be90755f76, type: 2}
   - {fileID: 2100000, guid: bef3b98bc61803a4390744ec816c5b50, type: 2}
   - {fileID: 2100000, guid: 3f59a16f2ed86834abfbd74d687e952d, type: 2}
-  agent: {fileID: 0}
-  range: 0
-  centrePoint: {fileID: 0}
+  agent: {fileID: 2085322381289883643}
+  range: 10
+  centrePoint: {fileID: 230426628431800274}
 --- !u!54 &6377195189802294435
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1866,7 +1866,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &230426629060468558
 Transform:
   m_ObjectHideFlags: 0

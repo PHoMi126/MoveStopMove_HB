@@ -3,7 +3,6 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
     Transform target;
-    CharacterController _character;
 
     public void Shoot(Transform _target)
     {

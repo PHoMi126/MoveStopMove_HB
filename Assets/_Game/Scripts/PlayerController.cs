@@ -3,9 +3,9 @@ using UnityEngine;
 public class PlayerController : CharacterController
 {
     [SerializeField] Rigidbody _rigidbody;
-    public FloatingJoystick _joystick;
+    [SerializeField] FloatingJoystick _joystick;
 
-    [SerializeField] private float _moveSpeed;
+    [SerializeField] float _moveSpeed;
 
     public void FixedUpdate()
     {
