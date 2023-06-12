@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -7,7 +5,11 @@ public class CameraFollow : MonoBehaviour
     public Transform player;
 
     // Update is called once per frame
-    void Update () {
-        transform.position = player.transform.position + new Vector3(0f, 10f, -2.5f);
+    void Update()
+    {
+        if (player != null)
+        {
+            transform.position = player.transform.position + new Vector3(0f, 10f, -2.5f);
+        }
     }
 }

@@ -61,6 +61,7 @@ public class CharacterController : MonoBehaviour
 
     public void Attack()
     {
+
         if (_targetController != null && _targetController.listEnemy.Count > 0)
         {
             attackTime = 3f;
@@ -107,15 +108,7 @@ public class CharacterController : MonoBehaviour
     {
         if (other.gameObject.tag == "Weapon")
         {
-            //Dead();
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Ignore")
-        {
-            Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
+            Dead();
         }
     }
 }

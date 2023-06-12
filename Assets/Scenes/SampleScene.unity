@@ -87842,6 +87842,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4135480120554540, guid: f24cfa7ea7c5c764dad9dddadf04cde2, type: 3}
   m_PrefabInstance: {fileID: 2029583325}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2031557044 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2288442568779342325, guid: c1d2fc2bee84c7d41843061f23c30c01, type: 3}
+  m_PrefabInstance: {fileID: 2288442569672128743}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2032468381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -93106,13 +93111,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 230426628431800275, guid: 07b4ac2d18d6e264297d72044db15fb0, type: 3}
+      propertyPath: m_TagString
+      value: Character
+      objectReference: {fileID: 0}
     - target: {fileID: 230426628431800278, guid: 07b4ac2d18d6e264297d72044db15fb0, type: 3}
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 230426628883970035, guid: 07b4ac2d18d6e264297d72044db15fb0, type: 3}
       propertyPath: m_TagString
-      value: Ignore
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 230426629467032266, guid: 07b4ac2d18d6e264297d72044db15fb0, type: 3}
       propertyPath: m_RootOrder
@@ -93162,14 +93171,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bot
       objectReference: {fileID: 0}
+    - target: {fileID: 230426629467032267, guid: 07b4ac2d18d6e264297d72044db15fb0, type: 3}
+      propertyPath: m_TagString
+      value: Character
+      objectReference: {fileID: 0}
     - target: {fileID: 2085322381289883636, guid: 07b4ac2d18d6e264297d72044db15fb0, type: 3}
       propertyPath: agent
       value: 
       objectReference: {fileID: 1944651655}
     - target: {fileID: 2085322381289883636, guid: 07b4ac2d18d6e264297d72044db15fb0, type: 3}
       propertyPath: range
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 2085322381289883636, guid: 07b4ac2d18d6e264297d72044db15fb0, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 2031557044}
     - target: {fileID: 2085322381289883636, guid: 07b4ac2d18d6e264297d72044db15fb0, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -93186,6 +93203,14 @@ PrefabInstance:
       propertyPath: characterTarget
       value: 
       objectReference: {fileID: 2074140851}
+    - target: {fileID: 5356899536614283606, guid: 07b4ac2d18d6e264297d72044db15fb0, type: 3}
+      propertyPath: m_TagString
+      value: Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6377195189802294435, guid: 07b4ac2d18d6e264297d72044db15fb0, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6377195189802294435, guid: 07b4ac2d18d6e264297d72044db15fb0, type: 3}
       propertyPath: m_UseGravity
       value: 1
@@ -93259,13 +93284,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2288442567733415149, guid: c1d2fc2bee84c7d41843061f23c30c01, type: 3}
+      propertyPath: m_TagString
+      value: Character
+      objectReference: {fileID: 0}
     - target: {fileID: 2288442568070310905, guid: c1d2fc2bee84c7d41843061f23c30c01, type: 3}
       propertyPath: m_TagString
       value: Weapon
       objectReference: {fileID: 0}
     - target: {fileID: 2288442568358572501, guid: c1d2fc2bee84c7d41843061f23c30c01, type: 3}
       propertyPath: m_TagString
-      value: Ignore
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2288442568665131952, guid: c1d2fc2bee84c7d41843061f23c30c01, type: 3}
       propertyPath: m_LocalRotation.x
@@ -93283,5 +93312,9 @@ PrefabInstance:
       propertyPath: characterTarget
       value: 
       objectReference: {fileID: 920530626}
+    - target: {fileID: 2288442568779342325, guid: c1d2fc2bee84c7d41843061f23c30c01, type: 3}
+      propertyPath: m_TagString
+      value: Character
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1d2fc2bee84c7d41843061f23c30c01, type: 3}

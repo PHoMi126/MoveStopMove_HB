@@ -1446,7 +1446,9 @@ MonoBehaviour:
   _weaponTransform: {fileID: 2288442569251475226}
   _targetController: {fileID: 2288442568358572499}
   _weaponPrefab: {fileID: 2288442568070310905}
+  characterTarget: {fileID: 0}
   CharacterObject: {fileID: 2288442568779342325}
+  attackTime: 3
   listClothes:
   - {fileID: 2100000, guid: f847b4f64b8e54942afbcfd79c6f9d38, type: 2}
   - {fileID: 2100000, guid: 0afac47bff04c9f4e86f168c3be0e47f, type: 2}
@@ -1456,7 +1458,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: bef3b98bc61803a4390744ec816c5b50, type: 2}
   - {fileID: 2100000, guid: 6db85fc1002af7e44bf4ab4b4b085a16, type: 2}
   - {fileID: 2100000, guid: 3f59a16f2ed86834abfbd74d687e952d, type: 2}
-  attackTime: 3
   _rigidbody: {fileID: 2288442568779342322}
   _joystick: {fileID: 0}
   _moveSpeed: 5
@@ -2602,6 +2603,10 @@ PrefabInstance:
     - target: {fileID: 309018253728662684, guid: 8161819da62fd634f90d30633523601f, type: 3}
       propertyPath: m_Name
       value: Axe_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 309018253728662684, guid: 8161819da62fd634f90d30633523601f, type: 3}
+      propertyPath: m_TagString
+      value: Weapon
       objectReference: {fileID: 0}
     - target: {fileID: 309018253728662691, guid: 8161819da62fd634f90d30633523601f, type: 3}
       propertyPath: m_RootOrder

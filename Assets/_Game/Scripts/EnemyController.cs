@@ -12,6 +12,7 @@ public class EnemyController : CharacterController
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        SetClothes(Random.Range(0, 8));
     }
 
 
@@ -30,6 +31,16 @@ public class EnemyController : CharacterController
             }
         }
 
+        attackTime -= Time.deltaTime;
+        if (attackTime <= 0)
+        {
+            Attack();
+        }
+
+        Vector3 fwd = transform.TransformDirection(Vector3.forward);
+
+        if (Physics.Raycast(transform.position, fwd, 1))
+            print("There is something in front of the object!");
     }
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {

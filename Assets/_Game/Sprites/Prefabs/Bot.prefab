@@ -1097,6 +1097,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: a7c73a4af1f3ae54d857e5be90755f76, type: 2}
   - {fileID: 2100000, guid: bef3b98bc61803a4390744ec816c5b50, type: 2}
   - {fileID: 2100000, guid: 3f59a16f2ed86834abfbd74d687e952d, type: 2}
+  agent: {fileID: 0}
+  range: 0
+  centrePoint: {fileID: 0}
 --- !u!54 &6377195189802294435
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2623,6 +2626,10 @@ PrefabInstance:
     - target: {fileID: 309018253728662684, guid: 8161819da62fd634f90d30633523601f, type: 3}
       propertyPath: m_Name
       value: Axe_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 309018253728662684, guid: 8161819da62fd634f90d30633523601f, type: 3}
+      propertyPath: m_TagString
+      value: Weapon
       objectReference: {fileID: 0}
     - target: {fileID: 309018253728662691, guid: 8161819da62fd634f90d30633523601f, type: 3}
       propertyPath: m_RootOrder
