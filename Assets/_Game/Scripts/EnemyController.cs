@@ -36,11 +36,6 @@ public class EnemyController : CharacterController
         {
             Attack();
         }
-
-        Vector3 fwd = transform.TransformDirection(Vector3.forward);
-
-        if (Physics.Raycast(transform.position, fwd, 1))
-            print("There is something in front of the object!");
     }
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
