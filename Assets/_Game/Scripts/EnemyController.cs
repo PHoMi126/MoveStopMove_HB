@@ -9,6 +9,8 @@ public class EnemyController : CharacterController
     public Transform centrePoint; //centre of the area the agent wants to move around in
     //instead of centrePoint you can set it as the transform of the agent if you don't care about a specific area
 
+    CharacterController _character;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -32,10 +34,16 @@ public class EnemyController : CharacterController
         }
 
         attackTime -= Time.deltaTime;
-        if (attackTime <= 0)
+        if (characterTarget != null && attackTime <= 0)
         {
-            Attack();
+            if (_character != null && _character.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            {
+                Attack();
+                _character.CharacterObject.transform.LookAt(_character.characterTarget.transform.position);
+            }
         }
+
+        Physics.IgnoreCollision(weaponPrefab.GetComponent<MeshCollider>(), GetComponent<BoxCollider>());
     }
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {

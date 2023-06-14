@@ -3,15 +3,16 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    [SerializeField] Animator _animator;
+
     [SerializeField] SkinnedMeshRenderer _characterMesh;
     [SerializeField] SkinnedMeshRenderer _pantMesh;
     [SerializeField] Transform _weaponBase;
     [SerializeField] Transform _weaponTransform;
     [SerializeField] TargetController _targetController;
-    [SerializeField] GameObject _weaponPrefab;
-    [SerializeField] Transform characterTarget;
 
+    public GameObject weaponPrefab;
+    public Animator animator;
+    public Transform characterTarget;
     public GameObject CharacterObject;
     public float attackTime;
     public List<Material> listClothes;
@@ -30,18 +31,19 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         SetClothes(Random.Range(0, 8));
+        //Physics.IgnoreCollision(weaponPrefab.GetComponent<MeshCollider>(), GetComponent<SphereCollider>());
     }
 
     void Update()
     {
         attackTime -= Time.deltaTime;
-        if (attackTime <= 0)
+        if (characterTarget != null && attackTime <= 0)
         {
-            Attack();
-        }
-        else
-        {
-            EndAttack();
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            {
+                Attack();
+                CharacterObject.transform.LookAt(characterTarget.transform.position);
+            }
         }
     }
 
@@ -50,7 +52,7 @@ public class CharacterController : MonoBehaviour
         if (currentAnimState != _state)
         {
             currentAnimState = _state;
-            _animator.SetTrigger(currentAnimState.ToString());
+            animator.SetTrigger(currentAnimState.ToString());
         }
     }
 
@@ -68,9 +70,8 @@ public class CharacterController : MonoBehaviour
         if (_targetController != null && _targetController.listEnemy.Count > 0)
         {
             attackTime = 3f;
-            ChangeAnimation(AnimState.Attack);
             ThrowWeapon();
-            CharacterObject.transform.LookAt(characterTarget);
+            Invoke("EndAttack", 0.5f);
         }
     }
 
@@ -78,10 +79,12 @@ public class CharacterController : MonoBehaviour
     {
         if (_targetController.FindTheTarget() != null)
         {
-            GameObject weaponObject = Instantiate(_weaponPrefab);
+            ChangeAnimation(AnimState.Attack);
+            GameObject weaponObject = Instantiate(weaponPrefab);
+            weaponObject.name = "Weapon " + this.gameObject.name;
             weaponObject.transform.position = _weaponBase.transform.position;
             weaponObject.transform.rotation = _weaponBase.transform.rotation;
-
+            weaponObject.GetComponent<WeaponController>().owner = this;
             weaponObject.GetComponent<WeaponController>().Shoot(_targetController.FindTheTarget().transform);
         }
         _weaponTransform.gameObject.SetActive(false);
@@ -90,7 +93,7 @@ public class CharacterController : MonoBehaviour
     public void EndAttack()
     {
         _weaponTransform.gameObject.SetActive(true);
-        //ChangeAnimation(AnimState.Idle);
+        ChangeAnimation(AnimState.Idle);
     }
 
     public void Dead()
@@ -104,14 +107,6 @@ public class CharacterController : MonoBehaviour
         if (gameObject != null)
         {
             Destroy(gameObject);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Weapon")
-        {
-            Dead();
         }
     }
 }

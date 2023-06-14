@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
+    public CharacterController owner;
     Transform target;
 
     public void Shoot(Transform _target)
@@ -12,5 +13,17 @@ public class WeaponController : MonoBehaviour
         {
             Destroy(this.gameObject);
         });
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Character"))
+        {
+            CharacterController otherController = other.GetComponent<CharacterController>();
+            if (otherController != null && otherController != owner)
+            {
+                otherController.Dead();
+            }
+        }
     }
 }
