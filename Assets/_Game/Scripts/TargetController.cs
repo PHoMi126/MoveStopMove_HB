@@ -40,8 +40,13 @@ public class TargetController : MonoBehaviour
 
     public GameObject FindTheTarget()
     {
-        if (listEnemy.Count == 0)
+        if (listEnemy.Count == 0 && listEnemy != null)
+        {
             return null;
-        else return listEnemy[0].gameObject;
+        }
+        else
+        {
+            return listEnemy[0].gameObject;
+        }
     }
 }

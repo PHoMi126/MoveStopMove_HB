@@ -17,7 +17,6 @@ public class EnemyController : CharacterController
         SetClothes(Random.Range(0, 8));
     }
 
-
     void Update()
     {
         if (agent.remainingDistance <= agent.stoppingDistance) //done with path
@@ -42,12 +41,9 @@ public class EnemyController : CharacterController
                 _character.CharacterObject.transform.LookAt(_character.characterTarget.transform.position);
             }
         }
-
-        Physics.IgnoreCollision(weaponPrefab.GetComponent<MeshCollider>(), GetComponent<BoxCollider>());
     }
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
-
         Vector3 randomPoint = center + Random.insideUnitSphere * range; //random point in a sphere 
         NavMeshHit hit;
         if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)) //documentation: https://docs.unity3d.com/ScriptReference/AI.NavMesh.SamplePosition.html

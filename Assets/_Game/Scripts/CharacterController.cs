@@ -31,19 +31,16 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         SetClothes(Random.Range(0, 8));
-        //Physics.IgnoreCollision(weaponPrefab.GetComponent<MeshCollider>(), GetComponent<SphereCollider>());
+        Physics.IgnoreCollision(weaponPrefab.GetComponent<MeshCollider>(), GetComponent<BoxCollider>());
     }
 
     void Update()
     {
         attackTime -= Time.deltaTime;
-        if (characterTarget != null && attackTime <= 0)
+        if (characterTarget != null && attackTime <= 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-            {
-                Attack();
-                CharacterObject.transform.LookAt(characterTarget.transform.position);
-            }
+            Attack();
+            CharacterObject.transform.LookAt(characterTarget.transform.position);
         }
     }
 
@@ -106,7 +103,8 @@ public class CharacterController : MonoBehaviour
     {
         if (gameObject != null)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            _targetController.gameObject.SetActive(false);
         }
     }
 }
