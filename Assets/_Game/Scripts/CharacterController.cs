@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-
     [SerializeField] SkinnedMeshRenderer _characterMesh;
     [SerializeField] SkinnedMeshRenderer _pantMesh;
     [SerializeField] Transform _weaponBase;
@@ -12,17 +11,15 @@ public class CharacterController : MonoBehaviour
 
     public GameObject weaponPrefab;
     public Animator animator;
+
     public Transform characterTarget;
     public GameObject CharacterObject;
+
     public float attackTime;
     public List<Material> listClothes;
 
     private AnimState currentAnimState = AnimState.Idle;
-
-    public enum CharacterType
-    {
-        Player, Enemy
-    }
+    public bool isDead = false;
     public enum AnimState
     {
         Idle, Run, Attack, Ulti, Dance, Dead
@@ -31,16 +28,16 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         SetClothes(Random.Range(0, 8));
-        Physics.IgnoreCollision(weaponPrefab.GetComponent<MeshCollider>(), GetComponent<BoxCollider>());
+        //Physics.IgnoreCollision(weaponPrefab.GetComponent<MeshCollider>(), GetComponent<BoxCollider>());
+        isDead = false;
     }
 
     void Update()
     {
         attackTime -= Time.deltaTime;
-        if (characterTarget != null && attackTime <= 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        if (attackTime <= 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
             Attack();
-            CharacterObject.transform.LookAt(characterTarget.transform.position);
         }
     }
 
@@ -68,7 +65,9 @@ public class CharacterController : MonoBehaviour
         {
             attackTime = 3f;
             ThrowWeapon();
-            Invoke("EndAttack", 0.5f);
+            CharacterObject.transform.LookAt(characterTarget.transform.position);
+            CharacterObject.transform.localEulerAngles = new Vector3(0f, CharacterObject.transform.localEulerAngles.y, 0f);
+            Invoke(nameof(EndAttack), 0.5f);
         }
     }
 
@@ -79,8 +78,7 @@ public class CharacterController : MonoBehaviour
             ChangeAnimation(AnimState.Attack);
             GameObject weaponObject = Instantiate(weaponPrefab);
             weaponObject.name = "Weapon " + this.gameObject.name;
-            weaponObject.transform.position = _weaponBase.transform.position;
-            weaponObject.transform.rotation = _weaponBase.transform.rotation;
+            weaponObject.transform.SetPositionAndRotation(_weaponBase.transform.position, _weaponBase.transform.rotation);
             weaponObject.GetComponent<WeaponController>().owner = this;
             weaponObject.GetComponent<WeaponController>().Shoot(_targetController.FindTheTarget().transform);
         }
@@ -95,16 +93,7 @@ public class CharacterController : MonoBehaviour
 
     public void Dead()
     {
+        isDead = true;
         ChangeAnimation(AnimState.Dead);
-        Invoke("Kill", 2f);
-    }
-
-    public void Kill()
-    {
-        if (gameObject != null)
-        {
-            gameObject.SetActive(false);
-            _targetController.gameObject.SetActive(false);
-        }
     }
 }

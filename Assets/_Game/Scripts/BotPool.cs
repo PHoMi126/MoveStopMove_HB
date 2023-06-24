@@ -1,34 +1,27 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class BotPool : MonoBehaviour
 {
-    public static BotPool SharedInstance;
-    public List<GameObject> pooledObjects;
-    public GameObject objectToPool;
-    public int amountToPool;
-    public GameObject[] spawnPoints;
-
-    void Awake()
-    {
-        SharedInstance = this;
-    }
+    public GameObject enemy;
+    public int xPos;
+    public int zPos;
+    public int enemyCount;
 
     void Start()
     {
-        Invoke(nameof(PooledBots), 0.2f);
+        StartCoroutine(EnemySpawn());
     }
 
-    public void PooledBots()
+    IEnumerator EnemySpawn()
     {
-        pooledObjects = new List<GameObject>();
-        GameObject tmp;
-        for (int i = 0; i < amountToPool; i++)
+        while (enemyCount < 0)
         {
-            int spawn = Random.Range(0, spawnPoints.Length);
-            tmp = Instantiate(objectToPool, spawnPoints[spawn].transform.position, Quaternion.identity);
-            tmp.SetActive(true);
-            pooledObjects.Add(tmp);
+            xPos = Random.Range(-38, -15);
+            zPos = Random.Range(-15, 25);
+            Instantiate(enemy, new Vector3(xPos, 0.05f, zPos), Quaternion.identity);
+            yield return new WaitForSeconds(0.1f);
+            enemyCount += 1;
         }
     }
 }

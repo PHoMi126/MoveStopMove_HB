@@ -4,6 +4,7 @@ using UnityEngine;
 public class TargetController : MonoBehaviour
 {
     public CharacterController parent;
+    CharacterController enemy;
     public List<CharacterController> listEnemy = new List<CharacterController>();
     Vector3 startPos;
 
@@ -16,21 +17,37 @@ public class TargetController : MonoBehaviour
     {
         if (parent != null)
         {
-            this.transform.localPosition = parent.transform.localPosition + startPos;
+            transform.localPosition = parent.transform.localPosition + startPos;
+        }
+        if (enemy != null && enemy.isDead)
+        {
+            for (int i = 0; i < listEnemy.Count; i++)
+            {
+                listEnemy.RemoveAt(i);
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        CharacterController enemy = other.GetComponent<CharacterController>();
-        if (enemy != parent && enemy != null && !listEnemy.Contains(enemy))
+        if (other.CompareTag("Character"))
         {
-            listEnemy.Add(enemy);
+            enemy = other.GetComponent<CharacterController>();
+            Debug.Log("OnTriggerEnter: " + other.name);
+            if (enemy != null)
+            {
+                Debug.Log("OnTriggerEnter: " + enemy.transform.parent.name);
+                if (enemy != parent && !listEnemy.Contains(enemy))
+                {
+                    listEnemy.Add(enemy);
+                }
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        //Debug.LogError("OnTriggerExit : " + other.name);
         CharacterController enemy = other.GetComponent<CharacterController>();
         if (enemy != null && listEnemy.Contains(enemy))
         {
