@@ -29,11 +29,11 @@ public class PlayerController : MonoBehaviour
         {
             Stopping();
         }
-        /*else if (_characterController.animator.GetCurrentAnimatorStateInfo(0).IsName("Dead"))
+        else if (_characterController.animator.GetCurrentAnimatorStateInfo(0).IsName("Dead"))
         {
             _rigidbody.velocity = Vector3.zero;
             Invoke(nameof(PlayerDead), 2f);
-        }*/
+        }
     }
 
     private void Moving()
