@@ -8,12 +8,12 @@ public class TargetController : MonoBehaviour
     public List<CharacterController> listEnemy = new List<CharacterController>();
     Vector3 startPos;
 
-    public void Start()
+    private void Start()
     {
         startPos = transform.localPosition;
     }
 
-    public void Update()
+    private void Update()
     {
         if (parent != null)
         {
@@ -21,10 +21,7 @@ public class TargetController : MonoBehaviour
         }
         if (enemy != null && enemy.isDead)
         {
-            for (int i = 0; i < listEnemy.Count; i++)
-            {
-                listEnemy.RemoveAt(i);
-            }
+            listEnemy.Remove(enemy);
         }
     }
 
@@ -33,7 +30,7 @@ public class TargetController : MonoBehaviour
         if (other.CompareTag("Character"))
         {
             enemy = other.GetComponent<CharacterController>();
-            Debug.Log("OnTriggerEnter: " + other.name);
+            //Debug.Log("OnTriggerEnter: " + other.name);
             if (enemy != null)
             {
                 Debug.Log("OnTriggerEnter: " + enemy.transform.parent.name);

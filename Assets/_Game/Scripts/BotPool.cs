@@ -15,10 +15,10 @@ public class BotPool : MonoBehaviour
 
     IEnumerator EnemySpawn()
     {
-        while (enemyCount < 0)
+        while (enemyCount < 20)
         {
-            xPos = Random.Range(-38, -15);
-            zPos = Random.Range(-15, 25);
+            xPos = Random.Range(-55, 17);
+            zPos = Random.Range(-35, 45);
             Instantiate(enemy, new Vector3(xPos, 0.05f, zPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
             enemyCount += 1;

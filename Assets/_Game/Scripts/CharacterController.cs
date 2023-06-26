@@ -43,6 +43,8 @@ public class CharacterController : MonoBehaviour
 
     public void ChangeAnimation(AnimState _state)
     {
+        if (isDead)
+            return;
         if (currentAnimState != _state)
         {
             currentAnimState = _state;
@@ -93,7 +95,7 @@ public class CharacterController : MonoBehaviour
 
     public void Dead()
     {
-        isDead = true;
         ChangeAnimation(AnimState.Dead);
+        isDead = true;
     }
 }

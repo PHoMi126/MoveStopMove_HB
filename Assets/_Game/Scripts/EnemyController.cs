@@ -12,6 +12,9 @@ public class EnemyController : MonoBehaviour
 
     public CharacterController _characterController;
 
+    public float waitTimer = 0f;
+
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -23,31 +26,36 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        waitTimer += Time.deltaTime;
         if (_characterController != null)
         {
-            if (agent.remainingDistance <= agent.stoppingDistance) //done with path
+            if (_characterController.animator.GetCurrentAnimatorStateInfo(0).IsName("Dead"))
             {
-                _characterController.ChangeAnimation(AnimState.Idle);
-
-                if (RandomPoint(centrePoint.position, range, out Vector3 point)) //pass in our centre point and radius of area
-                {
-                    Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
-                    agent.SetDestination(point);
-                    _characterController.ChangeAnimation(AnimState.Run);
-                }
+                Invoke(nameof(Dead), 2.2f);
+                agent.isStopped = true;
             }
-
-            _characterController.attackTime -= Time.deltaTime;
-            if (_characterController != null && _characterController.attackTime <= 0f)
+            else
             {
-                if (_characterController.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                if (agent.remainingDistance <= agent.stoppingDistance) //done with path
                 {
-                    _characterController.Attack();
+                    _characterController.ChangeAnimation(AnimState.Idle);
+
+                    if (RandomPoint(centrePoint.position, range, out Vector3 point) && waitTimer >= 3f) //pass in our centre point and radius of area
+                    {
+                        waitTimer = 0f;
+                        Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
+                        agent.SetDestination(point);
+                        _characterController.ChangeAnimation(AnimState.Run);
+                    }
                 }
-                else if (_characterController.animator.GetCurrentAnimatorStateInfo(0).IsName("Dead"))
+
+                _characterController.attackTime -= Time.deltaTime;
+                if (_characterController != null && _characterController.attackTime <= 0f)
                 {
-                    Invoke(nameof(Dead), 1f);
-                    agent.isStopped = true;
+                    if (_characterController.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                    {
+                        _characterController.Attack();
+                    }
                 }
             }
         }
