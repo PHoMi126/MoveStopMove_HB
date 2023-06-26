@@ -19,9 +19,13 @@ public class TargetController : MonoBehaviour
         {
             transform.localPosition = parent.transform.localPosition + startPos;
         }
-        if (enemy != null && enemy.isDead)
+        if (enemy != null && enemy.isDead && listEnemy.Contains(enemy) && enemy != parent)
         {
             listEnemy.Remove(enemy);
+            /* for (int i = 0; i < listEnemy.Count; i++)
+            {
+                listEnemy.RemoveAt(i);
+            } */
         }
     }
 
