@@ -31,12 +31,13 @@ public class PlayerController : MonoBehaviour
         }
         else if (_characterController.animator.GetCurrentAnimatorStateInfo(0).IsName("Dead"))
         {
+            _joystick.gameObject.SetActive(false);
             _rigidbody.velocity = Vector3.zero;
             Invoke(nameof(PlayerDead), 2f);
         }
     }
 
-    private void Moving()
+    public void Moving()
     {
         if (_joystick != null && _characterController != null)
         {
@@ -53,7 +54,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Stopping()
+    public void Stopping()
     {
         _characterController.ChangeAnimation(AnimState.Idle);
         _rigidbody.velocity = Vector3.zero;
@@ -62,7 +63,6 @@ public class PlayerController : MonoBehaviour
     private void PlayerDead()
     {
         gameObject.SetActive(false);
-        _joystick.gameObject.SetActive(false);
         _gameOverMenu.gameObject.SetActive(true);
     }
 }

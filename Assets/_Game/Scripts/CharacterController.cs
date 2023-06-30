@@ -5,14 +5,12 @@ public class CharacterController : MonoBehaviour
 {
     [SerializeField] SkinnedMeshRenderer _characterMesh;
     [SerializeField] SkinnedMeshRenderer _pantMesh;
-    [SerializeField] Transform _weaponBase;
     [SerializeField] Transform _weaponTransform;
     [SerializeField] TargetController _targetController;
 
     public GameObject weaponPrefab;
     public Animator animator;
 
-    public Transform characterTarget;
     public GameObject CharacterObject;
 
     public float attackTime;
@@ -35,7 +33,7 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         attackTime -= Time.deltaTime;
-        if (attackTime <= 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        if (attackTime <= 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && _targetController != null && _targetController.listEnemy.Count > 0)
         {
             Attack();
         }
@@ -63,24 +61,21 @@ public class CharacterController : MonoBehaviour
 
     public void Attack()
     {
-        if (_targetController != null && _targetController.listEnemy.Count > 0)
-        {
-            attackTime = 3f;
-            ThrowWeapon();
-            CharacterObject.transform.LookAt(characterTarget.transform.position);
-            CharacterObject.transform.localEulerAngles = new Vector3(0f, CharacterObject.transform.localEulerAngles.y, 0f);
-            Invoke(nameof(EndAttack), 0.5f);
-        }
+        attackTime = 3f;
+        ThrowWeapon();
+        CharacterObject.transform.localEulerAngles = new Vector3(0f, CharacterObject.transform.localEulerAngles.y, 0f);
+        Invoke(nameof(EndAttack), 0.5f);
     }
 
     public void ThrowWeapon()
     {
         if (_targetController.FindTheTarget() != null)
         {
+            CharacterObject.transform.LookAt(_targetController.FindTheTarget().transform);
             ChangeAnimation(AnimState.Attack);
             GameObject weaponObject = Instantiate(weaponPrefab);
             weaponObject.name = "Weapon " + this.gameObject.name;
-            weaponObject.transform.SetPositionAndRotation(_weaponBase.transform.position, _weaponBase.transform.rotation);
+            weaponObject.transform.SetPositionAndRotation(_weaponTransform.transform.position, _weaponTransform.transform.rotation);
             weaponObject.GetComponent<WeaponController>().owner = this;
             weaponObject.GetComponent<WeaponController>().Shoot(_targetController.FindTheTarget().transform);
         }

@@ -38,7 +38,7 @@ public class TargetController : MonoBehaviour
             //Debug.Log("OnTriggerEnter: " + other.name);
             if (enemy != null)
             {
-                Debug.Log("OnTriggerEnter: " + enemy.transform.parent.name);
+                //Debug.Log("OnTriggerEnter: " + enemy.transform.parent.name);
                 if (enemy != parent && !listEnemy.Contains(enemy))
                 {
                     listEnemy.Add(enemy);

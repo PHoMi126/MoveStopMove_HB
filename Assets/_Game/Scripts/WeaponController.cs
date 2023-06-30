@@ -20,7 +20,7 @@ public class WeaponController : MonoBehaviour
         if (other.CompareTag("Character"))
         {
             CharacterController otherController = other.GetComponent<CharacterController>();
-            if (otherController != null && otherController != owner)
+            if (otherController != null && otherController != owner && other != null)
             {
                 otherController.Dead();
             }

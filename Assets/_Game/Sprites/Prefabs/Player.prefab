@@ -90,7 +90,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2231878550681480168}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.03, z: -0.15600014}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -466,9 +466,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2231878551081619215}
+  - component: {fileID: 3258213350287050448}
+  - component: {fileID: 2707891013695177659}
   m_Layer: 0
   m_Name: WeaponTransform
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -489,6 +491,32 @@ Transform:
   m_Father: {fileID: 2231878551393508440}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3258213350287050448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2231878551081619200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52e07ab4b9b19841a9d773b6d2c7334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 2231878552711143916}
+--- !u!65 &2707891013695177659
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2231878551081619200}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 0.7, z: 0.1}
+  m_Center: {x: -0.2, y: 0.3, z: 0}
 --- !u!1 &2231878551095189311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1347,8 +1375,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2231878551853910194}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.06, y: 0.054, z: 0.02}
-  m_LocalScale: {x: 3.3, y: 3.3, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.65, y: 1.65, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2231878550681480181}
@@ -1395,7 +1423,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d3982db017529b049b0e62f7d413291e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b56d9fa0e8bd6e409ed188db38a692c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.34117648}
   m_FlipX: 0
   m_FlipY: 0
@@ -1545,7 +1573,6 @@ GameObject:
   - component: {fileID: 2231878552069308650}
   - component: {fileID: 2231878552069308662}
   - component: {fileID: 2231878552069308663}
-  - component: {fileID: 2231878552069308648}
   - component: {fileID: 2231878552069308649}
   m_Layer: 0
   m_Name: Axe_0
@@ -1620,19 +1647,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2231878552069308648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2231878552069308651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a52e07ab4b9b19841a9d773b6d2c7334, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  owner: {fileID: 2231878552711143916}
 --- !u!64 &2231878552069308649
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1660,7 +1674,7 @@ GameObject:
   - component: {fileID: 1602401683}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2628,12 +2642,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterMesh: {fileID: 2231878552577039057}
   _pantMesh: {fileID: 2231878550952762608}
-  _weaponBase: {fileID: 2231878552069308650}
   _weaponTransform: {fileID: 2231878551081619215}
   _targetController: {fileID: 2231878550681480183}
   weaponPrefab: {fileID: 2231878552069308651}
   animator: {fileID: 2231878552711143913}
-  characterTarget: {fileID: 0}
+  characterTarget: {fileID: 4806643571751542432, guid: e9f84d4ee48141b478abf210bd37b51f, type: 3}
   CharacterObject: {fileID: 2231878552078162184}
   attackTime: 3
   listClothes:
