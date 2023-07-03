@@ -112,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 2231878552711143916}
   listEnemy: []
+  crosshair: {fileID: 2166688421629778294, guid: 6d1727423e602c3478bb282d08798f1e, type: 3}
 --- !u!135 &2231878550681480182
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2646,7 +2647,6 @@ MonoBehaviour:
   _targetController: {fileID: 2231878550681480183}
   weaponPrefab: {fileID: 2231878552069308651}
   animator: {fileID: 2231878552711143913}
-  characterTarget: {fileID: 4806643571751542432, guid: e9f84d4ee48141b478abf210bd37b51f, type: 3}
   CharacterObject: {fileID: 2231878552078162184}
   attackTime: 3
   listClothes:

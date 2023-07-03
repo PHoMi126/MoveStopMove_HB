@@ -41,11 +41,11 @@ public class PlayerController : MonoBehaviour
     {
         if (_joystick != null && _characterController != null)
         {
-            _characterController.ChangeAnimation(AnimState.Run);
             horizontal = _joystick.Horizontal;
             vertical = _joystick.Vertical;
             if (Mathf.Abs(horizontal) > 0.1f || Mathf.Abs(vertical) > 0.1f)
             {
+                _characterController.ChangeAnimation(AnimState.Run);
                 direction = new Vector3(horizontal, 0f, vertical);
                 Quaternion toRotation = Quaternion.LookRotation(direction);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 720f * Time.deltaTime);
@@ -64,5 +64,6 @@ public class PlayerController : MonoBehaviour
     {
         gameObject.SetActive(false);
         _gameOverMenu.gameObject.SetActive(true);
+        _gameOverMenu.GameOver();
     }
 }

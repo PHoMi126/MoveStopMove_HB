@@ -7582,6 +7582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301175f0633b82546ae9da477f0708cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseButton: {fileID: 1097852652}
 --- !u!1001 &211794366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75810,6 +75811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301175f0633b82546ae9da477f0708cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseButton: {fileID: 1097852652}
 --- !u!1001 &2100115122
 PrefabInstance:
   m_ObjectHideFlags: 0

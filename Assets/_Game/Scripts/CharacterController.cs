@@ -10,14 +10,13 @@ public class CharacterController : MonoBehaviour
 
     public GameObject weaponPrefab;
     public Animator animator;
-
     public GameObject CharacterObject;
-
     public float attackTime;
     public List<Material> listClothes;
 
     private AnimState currentAnimState = AnimState.Idle;
     public bool isDead = false;
+
     public enum AnimState
     {
         Idle, Run, Attack, Ulti, Dance, Dead
@@ -26,7 +25,6 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         SetClothes(Random.Range(0, 8));
-        //Physics.IgnoreCollision(weaponPrefab.GetComponent<MeshCollider>(), GetComponent<BoxCollider>());
         isDead = false;
     }
 

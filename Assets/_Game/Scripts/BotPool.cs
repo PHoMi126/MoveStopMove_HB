@@ -13,15 +13,28 @@ public class BotPool : MonoBehaviour
         StartCoroutine(EnemySpawn());
     }
 
+    private void Update()
+    {
+        Invoke(nameof(End), 0.5f);
+    }
+
     IEnumerator EnemySpawn()
     {
-        while (enemyCount < 20)
+        while (enemyCount < 10)
         {
-            xPos = Random.Range(-55, 17);
-            zPos = Random.Range(-35, 45);
+            xPos = Random.Range(-55, -12);
+            zPos = Random.Range(-35, 40);
             Instantiate(enemy, new Vector3(xPos, 0.05f, zPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
             enemyCount += 1;
+        }
+    }
+
+    void End()
+    {
+        if (enemyCount == 0)
+        {
+            Time.timeScale = 0f;
         }
     }
 }

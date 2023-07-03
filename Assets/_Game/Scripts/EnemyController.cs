@@ -40,12 +40,12 @@ public class EnemyController : MonoBehaviour
                 {
                     _characterController.ChangeAnimation(AnimState.Idle);
 
-                    if (RandomPoint(centrePoint.position, range, out Vector3 point) && waitTimer >= 3f) //pass in our centre point and radius of area
+                    if (RandomPoint(centrePoint.position, range, out Vector3 point) && waitTimer >= 4f) //pass in our centre point and radius of area
                     {
+                        _characterController.ChangeAnimation(AnimState.Run);
                         waitTimer = 0f;
                         Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
                         agent.SetDestination(point);
-                        _characterController.ChangeAnimation(AnimState.Run);
                     }
                 }
 
@@ -78,5 +78,6 @@ public class EnemyController : MonoBehaviour
     void Dead()
     {
         gameObject.SetActive(false);
+        //Destroy(gameObject);
     }
 }

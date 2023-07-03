@@ -42,6 +42,7 @@ public class TargetController : MonoBehaviour
                 if (enemy != parent && !listEnemy.Contains(enemy))
                 {
                     listEnemy.Add(enemy);
+
                 }
             }
         }
