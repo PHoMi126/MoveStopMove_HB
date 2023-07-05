@@ -31,6 +31,7 @@ public class EnemyController : MonoBehaviour
         {
             if (_characterController.animator.GetCurrentAnimatorStateInfo(0).IsName("Dead"))
             {
+                _characterController.weaponPrefab.SetActive(false);
                 Invoke(nameof(Dead), 2.2f);
                 agent.isStopped = true;
             }

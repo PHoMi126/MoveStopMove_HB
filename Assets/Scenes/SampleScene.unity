@@ -75940,7 +75940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseButton: {fileID: 1097852652}
-  indicator: {fileID: 0}
+  indicator: {fileID: 525379431}
 --- !u!1001 &2100115122
 PrefabInstance:
   m_ObjectHideFlags: 0

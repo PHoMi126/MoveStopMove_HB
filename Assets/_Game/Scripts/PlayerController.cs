@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (_characterController.animator.GetCurrentAnimatorStateInfo(0).IsName("Dead"))
         {
+            _characterController.weaponPrefab.SetActive(false);
             _joystick.gameObject.SetActive(false);
             _rigidbody.velocity = Vector3.zero;
             Invoke(nameof(PlayerDead), 2f);
