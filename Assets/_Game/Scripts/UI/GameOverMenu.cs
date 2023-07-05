@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameOverMenu : MonoBehaviour
 {
     public GameObject pauseButton;
+    public GameObject indicator;
 
     public void MainMenu()
     {
@@ -13,5 +14,6 @@ public class GameOverMenu : MonoBehaviour
     public void GameOver()
     {
         pauseButton.SetActive(false);
+        indicator.SetActive(false);
     }
 }

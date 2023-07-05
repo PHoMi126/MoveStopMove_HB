@@ -20,7 +20,7 @@ public class BotPool : MonoBehaviour
 
     IEnumerator EnemySpawn()
     {
-        while (enemyCount < 10)
+        while (enemyCount < 20)
         {
             xPos = Random.Range(-55, -12);
             zPos = Random.Range(-35, 40);
